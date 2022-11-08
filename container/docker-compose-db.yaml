@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  server:
+    hostname: localhost
+    network_mode: host
+    build:
+      context: ./docker
+      dockerfile: postgres_server
+    ports:
+      - "5432:5432"
+  pga:
+#    hostname: localhost
+#    network_mode: host
+    build:
+      context: ./docker
+      dockerfile: postgres_pga
+    depends_on:
+        - server
+    ports:
+      - "5433:80"

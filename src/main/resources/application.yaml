@@ -1,0 +1,50 @@
+spring:
+  profiles.active: dev
+  jpa:
+    hibernate:
+      ddl-auto: "update"
+      dialect: "PostgreSQLDialect"
+      default_schema: "Jobfinder"
+    show-sql: false
+
+  datasource:
+    initialization-mode: always
+    url: "jdbc:postgresql://localhost:5432/Jobfinder"
+    username: "admin"
+    password: "admin"
+
+#  flyway:
+#    url: "jdbc:postgresql://localhost:5432/Jobfinder?ssl=false"
+#    user: "admin"
+#    password: "admin"
+#    locations: "classpath:/db/migration"
+
+main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+name: dev-spring
+environment: develop
+enabled: true
+
+server:
+  port: 8090
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+name: prod-spring
+environment: develop
+enabled: false
+
+server:
+  port: 8095

@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  server:
+    networks:
+      - internal
+    build:
+      context: ./docker
+      dockerfile: postgres_server
+    ports:
+      - "5432:5432"
+  pga:
+    networks:
+      - internal
+    build:
+      context: ./docker
+      dockerfile: postgres_pga
+    depends_on:
+      - server
+    ports:
+      - "5433:80"
+
+  application:
+    networks:
+      - internal
+    build:
+      context: ./docker
+      dockerfile: application
+    depends_on:
+      - server
+    ports:
+      - "8090:8090"
+    volumes:
+      - type: volume
+        source: docker_log
+        target: /container/docker/log
+
+networks:
+  internal:
+    driver: bridge
+volumes:
+  docker_log:
+
+
