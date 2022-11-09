@@ -4,7 +4,7 @@
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
         <!-- daily rollover -->
         <FileNamePattern>container/docker/log/jobfinder_%d{yyyy-MM-dd}.log</FileNamePattern>
-        <CreateParentDirectories>true</CreateParentDirectories>
+
         <!-- keep 30 days' worth of history -->
         <maxHistory>30</maxHistory>
 

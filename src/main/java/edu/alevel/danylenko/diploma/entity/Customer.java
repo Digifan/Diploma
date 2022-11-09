@@ -24,8 +24,8 @@ public class Customer {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "profile",
-            joinColumns =  {@JoinColumn(name = "vacancy_id")},
-            inverseJoinColumns = {@JoinColumn(name = "customer_id")})
+            joinColumns =  {@JoinColumn(name = "customer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "vacancy_id")})
     @ToString.Exclude
     private Set<Vacancy> vacancies = new HashSet<>();
 

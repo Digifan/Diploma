@@ -29,14 +29,13 @@ import java.util.List;
 @Slf4j
 @Component
 public class JobFinderBot extends TelegramLongPollingBot {
-    private static final Logger logger = LoggerFactory.getLogger(JobFinderBot.class);
+
+    private final Logger logger = LoggerFactory.getLogger(JobFinderBot.class);
     final BotCredentials botCredentials;
     final BotServices botServices;
     final TelegramUpdateService telegramUpdateService;
     final LocaleMessageService localMessage;
     final List<TelegramMessageHandler> telegramMessageHandlers;
-
-
     public static final String START_COMMAND = "/start";
     public static final String HELP_COMMAND = "/help";
     public static final String PROFILE_COMMAND = "/profile";

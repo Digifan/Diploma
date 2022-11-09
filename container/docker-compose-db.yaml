@@ -1,16 +1,16 @@
 version: "3.9"
 services:
   server:
-    hostname: localhost
-    network_mode: host
+    networks:
+      - internal
     build:
       context: ./docker
       dockerfile: postgres_server
     ports:
       - "5432:5432"
   pga:
-#    hostname: localhost
-#    network_mode: host
+    networks:
+      - internal
     build:
       context: ./docker
       dockerfile: postgres_pga
@@ -18,3 +18,5 @@ services:
         - server
     ports:
       - "5433:80"
+networks:
+  internal:
