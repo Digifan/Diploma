@@ -3,6 +3,7 @@ EXPOSE 8090
 RUN mkdir -p /container/docker/log
 RUN addgroup -S spring-group && adduser -S spring -G spring-group
 RUN chown -R spring /container/docker/log
+VOLUME /container/docker/log
 USER spring:spring-group
 ARG JAR_FILE=jobfinder.jar
 COPY ${JAR_FILE} jobfinder.jar

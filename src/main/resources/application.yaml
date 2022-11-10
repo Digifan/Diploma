@@ -9,7 +9,7 @@ spring:
 
   datasource:
     initialization-mode: always
-    url: "jdbc:postgresql://localhost:5432/Jobfinder"
+    url: "jdbc:postgresql://server:5432/Jobfinder"
     username: "admin"
     password: "admin"
 

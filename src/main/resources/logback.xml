@@ -1,10 +1,15 @@
 <configuration>
+    <property name="jobfinder_log" value="container/docker/log/jobfinder.log"/>
     <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${jobfinder_log}</file>
 
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
         <!-- daily rollover -->
-        <FileNamePattern>container/docker/log/jobfinder_%d{yyyy-MM-dd}.log</FileNamePattern>
+        <FileNamePattern>container/docker/log/jobfinder_%d{yyyy-MM-dd}.%i.log</FileNamePattern>
 
+        <MaxFileSize>10MB</MaxFileSize>
+
+        <TotalSizeCap>500MB</TotalSizeCap>
         <!-- keep 30 days' worth of history -->
         <maxHistory>30</maxHistory>
 
@@ -14,7 +19,7 @@
         </encoder>
     </appender>
 
-    <logger name = "jobfinder" level = "debug" additivity = "false" >
+    <logger name = "jobfinder" level = "debug" additivity = "true" >
 
         <appender-ref ref="fileAppender" />
     </logger>
